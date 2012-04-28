@@ -38,16 +38,16 @@
                     <label for="selectmenu1">
                         What Group?
                     </label>
-                    <select name="selectmenu1" id="selectmenu1" data-theme="a" data-native-menu="true">
+                    <select name="selectmenu1" id="selectmenu1" data-theme="a" data-native-menu="false">
                         <option value='ungrouped' SELECTED>
                             Ungrouped
                         </option>
                         <option value="option1">
                             Yay Ya Pony Prince
                         </option>
-                        <option id='select-custom' onclick='$.mobile.changePage("#popup",{allowSamePageTransition:true})'>
-                        open
-                          </option>
+                        <option value='popup'>
+                        make new group...
+                        </option>
                     </select>
                 </div>
                 <input data-inline="true" data-theme="b" data-icon="check" data-iconpos="right" value="Submit" type="submit" />
@@ -93,7 +93,12 @@
             </div>
           </div>
         <script>
-            //App custom javascript
+          $('#selectmenu1').bind('change',function(e,ui) {
+            if ($(this).val() == 'popup') {
+$.mobile.changePage("#popup",{allowSamePageTransition:true})
+            }
+
+          })
         </script>
     </body>
 </html>
