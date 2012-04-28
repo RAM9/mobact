@@ -34,8 +34,8 @@
                     <label for="selectmenu1">
                         What Group?
                     </label>
-                    <select name="selectmenu1" id="selectmenu1" data-theme="a" data-native-menu="false">
-                        <option value='ungroup' selected='true'D>
+                    <select name="selectmenu1" id="selectmenu1" data-theme="a" data-native-menu="true">
+                      <option id='none' value='ungroup' selected='true'>
                             none
                         </option>
                         <option value='popup'>
@@ -91,7 +91,9 @@
         <script>
           $('#selectmenu1').bind('change',function(e,ui) {
             if ($(this).val() == 'popup') {
-$.mobile.changePage("#popup",{allowSamePageTransition:true})
+              $.mobile.changePage("#popup",{allowSamePageTransition:true})
+              /// always reset the selected element after popup is selected
+              $('#none').attr('selected',true)
             }
           })
           $('#save-camel').bind('click',function(e,ui) {
